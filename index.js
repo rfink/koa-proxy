@@ -13,7 +13,7 @@ module.exports = function(options) {
   }
 
   return function* proxy(next) {
-    var url = resolve(this.path, options);
+    var url = resolve(ignoreQuery(this.originalUrl), options);
 
     if(typeof options.suppressRequestHeaders === 'object'){
       options.suppressRequestHeaders.forEach(function(h, i){
